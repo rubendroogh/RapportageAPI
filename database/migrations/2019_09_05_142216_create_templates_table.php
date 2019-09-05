@@ -16,10 +16,13 @@ class CreateTemplatesTable extends Migration
         Schema::create('templates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 100);
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('base_template_id')->nullable();
-            $table->foreign('base_template_id')->references('id')->on('templates');
             $table->text('form');
             $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('base_template_id')->references('id')->on('templates');
         });
     }
 

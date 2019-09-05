@@ -15,10 +15,13 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('template_id');
-            $table->foreign('template_id')->references('id')->on('templates');
             $table->text('data');
             $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('template_id')->references('id')->on('templates');
         });
     }
 
