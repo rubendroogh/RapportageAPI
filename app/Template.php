@@ -13,7 +13,7 @@ class Template extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'base_template_id', 'form'
+        'name', 'user_id', 'base_template_id', 'form'
     ];
 
     /**
@@ -22,4 +22,9 @@ class Template extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

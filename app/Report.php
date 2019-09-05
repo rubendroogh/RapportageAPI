@@ -13,7 +13,7 @@ class Report extends Model
      * @var array
      */
     protected $fillable = [
-        'template_id', 'data'
+        'user_id', 'template_id', 'data'
     ];
 
     /**
@@ -22,4 +22,9 @@ class Report extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
