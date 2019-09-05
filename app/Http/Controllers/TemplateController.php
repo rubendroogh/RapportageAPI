@@ -20,6 +20,12 @@ class TemplateController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'user_id' => 'required',
+            'form' => 'required'
+        ]);
+
         $template = Template::create($request->all());
 
         return response()->json($template, 201);

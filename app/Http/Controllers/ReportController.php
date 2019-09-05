@@ -20,6 +20,12 @@ class ReportController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'user_id' => 'required',
+            'template_id' => 'required',
+            'data' => 'required'
+        ]);
+
         $report = Report::create($request->all());
 
         return response()->json($report, 201);
