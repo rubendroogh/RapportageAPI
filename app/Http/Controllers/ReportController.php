@@ -10,12 +10,16 @@ class ReportController extends Controller
 
     public function index()
     {
-        return response()->json(Report::all());
+        return response()->json(
+            Report::with('user')->get()
+        );
     }
 
     public function read($id)
     {
-        return response()->json(Report::find($id));
+        return response()->json(
+            Report::with('user')->find($id)
+        );
     }
 
     public function create(Request $request)

@@ -10,12 +10,16 @@ class UserController extends Controller
 
     public function index()
     {
-        return response()->json(User::all());
+        return response()->json(
+            User::with(['templates', 'reports'])->get()
+        );
     }
 
     public function read($id)
     {
-        return response()->json(User::find($id));
+        return response()->json(
+            User::with(['templates', 'reports'])->find($id)
+        );
     }
 
     public function create(Request $request)

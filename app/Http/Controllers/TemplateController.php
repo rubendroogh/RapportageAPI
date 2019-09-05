@@ -10,12 +10,16 @@ class TemplateController extends Controller
 
     public function index()
     {
-        return response()->json(Template::all());
+        return response()->json(
+            Template::with('user')->get()
+        );
     }
 
     public function read($id)
     {
-        return response()->json(Template::find($id));
+        return response()->json(
+            Template::with('user')->find($id)
+        );
     }
 
     public function create(Request $request)
